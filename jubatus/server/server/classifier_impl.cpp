@@ -1,4 +1,4 @@
-// This file is auto-generated from classifier.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.6.4-104-g3698e11/gintenlabo-fix-956
+// This file is auto-generated from classifier.idl(0.6.4-33-gcc8d7ca) with jenerator version 0.6.4-104-g3698e11/develop
 // *** DO NOT EDIT ***
 
 #include <map>
@@ -52,33 +52,33 @@ class classifier_impl : public jubatus::server::common::mprpc::rpc_server {
   }
 
   int32_t train(const std::vector<labeled_datum>& data) {
-    JWLOCK_(p_);
+    NOLOCK_(p_);
     return get_p()->train(data);
   }
 
   std::vector<std::vector<estimate_result> > classify(
       const std::vector<jubatus::core::fv_converter::datum>& data) {
-    JRLOCK_(p_);
+    NOLOCK_(p_);
     return get_p()->classify(data);
   }
 
   std::vector<std::string> get_labels() {
-    JRLOCK_(p_);
+    NOLOCK_(p_);
     return get_p()->get_labels();
   }
 
   bool set_label(const std::string& new_label) {
-    JWLOCK_(p_);
+    NOLOCK_(p_);
     return get_p()->set_label(new_label);
   }
 
   bool clear() {
-    JWLOCK_(p_);
+    NOLOCK_(p_);
     return get_p()->clear();
   }
 
   bool delete_label(const std::string& target_label) {
-    JWLOCK_(p_);
+    NOLOCK_(p_);
     return get_p()->delete_label(target_label);
   }
 
